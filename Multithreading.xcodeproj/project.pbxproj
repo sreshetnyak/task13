@@ -21,6 +21,8 @@
 		A582BF5418A561F40046544F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A582BF3618A561F40046544F /* UIKit.framework */; };
 		A582BF5C18A561F40046544F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A582BF5A18A561F40046544F /* InfoPlist.strings */; };
 		A582BF5E18A561F40046544F /* MultithreadingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A582BF5D18A561F40046544F /* MultithreadingTests.m */; };
+		A5C3F75F18A629B800C97CB2 /* TTStudentSuperman.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C3F75E18A629B800C97CB2 /* TTStudentSuperman.m */; };
+		A5F71D3018A56CAA00FA41C8 /* TTStudent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F71D2F18A56CAA00FA41C8 /* TTStudent.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,10 @@
 		A582BF5918A561F40046544F /* MultithreadingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MultithreadingTests-Info.plist"; sourceTree = "<group>"; };
 		A582BF5B18A561F40046544F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A582BF5D18A561F40046544F /* MultithreadingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultithreadingTests.m; sourceTree = "<group>"; };
+		A5C3F75D18A629B800C97CB2 /* TTStudentSuperman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTStudentSuperman.h; sourceTree = "<group>"; };
+		A5C3F75E18A629B800C97CB2 /* TTStudentSuperman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTStudentSuperman.m; sourceTree = "<group>"; };
+		A5F71D2E18A56CAA00FA41C8 /* TTStudent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTStudent.h; sourceTree = "<group>"; };
+		A5F71D2F18A56CAA00FA41C8 /* TTStudent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTStudent.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +123,10 @@
 				A582BF4418A561F40046544F /* Main.storyboard */,
 				A582BF4718A561F40046544F /* TTViewController.h */,
 				A582BF4818A561F40046544F /* TTViewController.m */,
+				A5F71D2E18A56CAA00FA41C8 /* TTStudent.h */,
+				A5F71D2F18A56CAA00FA41C8 /* TTStudent.m */,
+				A5C3F75D18A629B800C97CB2 /* TTStudentSuperman.h */,
+				A5C3F75E18A629B800C97CB2 /* TTStudentSuperman.m */,
 				A582BF4A18A561F40046544F /* Images.xcassets */,
 				A582BF3918A561F40046544F /* Supporting Files */,
 			);
@@ -251,6 +261,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A582BF4318A561F40046544F /* TTAppDelegate.m in Sources */,
+				A5C3F75F18A629B800C97CB2 /* TTStudentSuperman.m in Sources */,
+				A5F71D3018A56CAA00FA41C8 /* TTStudent.m in Sources */,
 				A582BF3F18A561F40046544F /* main.m in Sources */,
 				A582BF4918A561F40046544F /* TTViewController.m in Sources */,
 			);
@@ -461,6 +473,7 @@
 				A582BF6318A561F40046544F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A582BF6418A561F40046544F /* Build configuration list for PBXNativeTarget "MultithreadingTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +482,7 @@
 				A582BF6618A561F40046544F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
