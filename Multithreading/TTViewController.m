@@ -8,6 +8,7 @@
 
 #import "TTViewController.h"
 #import "TTStudent.h"
+#import "TTStudentSuperman.h"
 
 @interface TTViewController ()
 
@@ -35,18 +36,23 @@
     TTStudent *student4 = [[TTStudent alloc]initWithName:@"Aleksey" guessTheNumber:8500 range:10000];
     TTStudent *student5 = [[TTStudent alloc]initWithName:@"Aleksander" guessTheNumber:1200 range:10000];
     
-    [student1 startTask];
-    [student2 startTask];
-    [student3 startTask];
-    [student4 startTask];
-    [student5 startTask];
+    NSArray *student1Array = [NSArray arrayWithObjects:student1,student2,student3,student4,student5, nil];
     
-#pragma mark - Level Student
+    for (TTStudent *obj in student1Array) {
+        [obj startTask];
+    }
+    
+#pragma mark - Level Student && Master
 //    Студент.
 //    
 //    7. Задача та же, но вместе с условием передавайте студенту блок, в котором вы и объявите результаты
 //    8. Блок должен определяться в томже классе, где и определялись студенты
 //    9. Блок должен быть вызван на главном потоке
+//    Мастер.
+//
+//    10. Создать приватный метод класса (да да, приватный метод да еще и с плюсом), который будет возвращать статическую (то есть одну на все объекты класса студент) dispatch_queue_t, которая инициализируется при первом обращении к этому методу.
+//    11. Лучше в этом методе реализовать блок dispatch_once, ищите в инете как и зачем :) А что, программист всегда что-то ищет и хороший программист всегда находит.
+//    12. Все студенты должны выполнять свои процессы в этой queue и она должна быть CONCURRENT, типа все блоки одновременно выполняются
     
     TTStudent *student6 = [[TTStudent alloc]initWithName:@"Andrey" guessTheNumber:25 range:100];
     TTStudent *student7 = [[TTStudent alloc]initWithName:@"Vitaliy" guessTheNumber:10 range:100];
@@ -54,52 +60,33 @@
     TTStudent *student9 = [[TTStudent alloc]initWithName:@"Arthur" guessTheNumber:85 range:100];
     TTStudent *student10 = [[TTStudent alloc]initWithName:@"Georgiy" guessTheNumber:1 range:100];
     
-    [student6 startTaskWithBlock:^(NSString *str) {
-        if ([NSThread isMainThread]) {
-            NSLog(@"%@",str);
-        }
-    }];
+    NSArray *student2Array = [NSArray arrayWithObjects:student6,student7,student8,student9,student10, nil];
     
-    [student7 startTaskWithBlock:^(NSString *str) {
-        if ([NSThread isMainThread]) {
-            NSLog(@"%@",str);
-        }
-    }];
-    
-    [student8 startTaskWithBlock:^(NSString *str) {
-        if ([NSThread isMainThread]) {
-            NSLog(@"%@",str);
-        }
-    }];
-    
-    [student9 startTaskWithBlock:^(NSString *str) {
-        if ([NSThread isMainThread]) {
-            NSLog(@"%@",str);
-        }
-    }];
-    
-    [student10 startTaskWithBlock:^(NSString *str) {
-        if ([NSThread isMainThread]) {
-            NSLog(@"%@",str);
-        }
-    }];
-    
-#pragma mark - Level Master
-//    Мастер.
-//    
-//    10. Создать приватный метод класса (да да, приватный метод да еще и с плюсом), который будет возвращать статическую (то есть одну на все объекты класса студент) dispatch_queue_t, которая инициализируется при первом обращении к этому методу.
-//    11. Лучше в этом методе реализовать блок dispatch_once, ищите в инете как и зачем :) А что, программист всегда что-то ищет и хороший программист всегда находит.
-//    12. Все студенты должны выполнять свои процессы в этой queue и она должна быть CONCURRENT, типа все блоки одновременно выполняются
-    
-    
-    
+    for (TTStudent *obj in student2Array) {
+        [obj startTaskWithBlock:^(NSString *str) {
+            if ([NSThread isMainThread]) {
+                NSLog(@"%@",str);
+            }
+        }];
+    }
     
 #pragma mark - Level Superman
 //    Супермен.
 //    
 //    13. Добавьте еще один класс студента, который делает все тоже самое что вы реализовали до этого, только вместо GCD он использует NSOperation и NSOperationQueue. Вообще вынос мозга в самостоятельной работе :)
     
+    TTStudentSuperman *student11 = [[TTStudentSuperman alloc]initWithName:@"Nikita" guessTheNumber:564 range:1000000];
+    TTStudentSuperman *student12 = [[TTStudentSuperman alloc]initWithName:@"Anatoliy" guessTheNumber:2567 range:1000000];
+    TTStudentSuperman *student13 = [[TTStudentSuperman alloc]initWithName:@"Igory" guessTheNumber:7895 range:1000000];
+    TTStudentSuperman *student14 = [[TTStudentSuperman alloc]initWithName:@"Katya" guessTheNumber:5454 range:1000000];
+    TTStudentSuperman *student15 = [[TTStudentSuperman alloc]initWithName:@"Semen" guessTheNumber:1234 range:1000000];
     
+    NSArray *student3Array = [NSArray arrayWithObjects:student11,student12,student13,student14,student15, nil];
+    
+    for (TTStudentSuperman *obj in student3Array) {
+        [obj startTask];
+    }
+
     
 }
 

@@ -14,6 +14,9 @@
 @property (assign,nonatomic) NSInteger number;
 @property (assign,nonatomic) NSInteger range;
 
++ (NSOperationQueue *)sharedInstance;
+
 - (id)initWithName:(NSString *)name guessTheNumber:(NSInteger)number range:(NSInteger)range;
+- (void)startTask;
 
 @end

@@ -16,8 +16,10 @@ typedef  void (^studentBlock)(NSString *str);
 @property (assign,nonatomic) NSInteger number;
 @property (assign,nonatomic) NSInteger range;
 
++ (dispatch_queue_t)sharedInstance;
+
 - (id)initWithName:(NSString *)name guessTheNumber:(NSInteger)number range:(NSInteger)range;
 - (void)startTask;
 - (void)startTaskWithBlock:(studentBlock)block;
-+ (dispatch_queue_t)sharedInstance;
+
 @end

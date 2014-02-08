@@ -12,6 +12,7 @@
 
 @interface TTStudent ()
 @property (strong,nonatomic) NSMutableArray *threadArray;
+@property (assign,nonatomic) double startTime;
 
 @end
 
@@ -40,6 +41,8 @@
 
 - (void)startTask {
     
+    self.startTime = CACurrentMediaTime();
+    
     int rangeThread = self.range / THREAD_COUNT;
     
     int startPoint = 0;
@@ -53,7 +56,9 @@
         NSRange threadRange = {startPoint,endPoint};
         NSThread *thread = [[NSThread alloc]initWithTarget:self selector:@selector(guessTheNumberThread:) object:[NSValue valueWithRange:threadRange]];
         thread.name = [NSString stringWithFormat:@"%@ %d",self.name, i];
-        [self.threadArray addObject:thread];
+        @synchronized (self.threadArray) {
+            [self.threadArray addObject:thread];
+        }
         [thread start];
         startPoint = startPoint + rangeThread;
         endPoint = endPoint + rangeThread;
@@ -63,24 +68,26 @@
 
 - (void)guessTheNumberThread:(NSValue *)threadObj {
     
-    @autoreleasepool {
-        NSRange range = [threadObj rangeValue];
-        //NSMutableArray *temp = self.threadArray;
-        for (int i = range.location; i < range.length; i++) {
-            if (i == self.number) {
-                NSLog(@"%@ found number, number equals %d",self.name, i);
-//                for (NSThread *thread in temp) {
-//                    if ([thread isExecuting]) {
-//                        [thread cancel];
-//                        NSLog(@"%@ is cancel",thread.name);
-//                    }
-//                }
+    NSRange range = [threadObj rangeValue];
+    NSMutableArray *temp = self.threadArray;
+    for (int i = range.location; i < range.length; i++) {
+        if (i == self.number) {
+            NSLog(@"%@ found number, number equals %d during = %f",self.name, i, CACurrentMediaTime() - self.startTime);
+            
+            @synchronized (self.threadArray) {
+                for (NSThread *thread in temp) {
+                        [thread cancel];
+                        NSLog(@"%@ is cancel",thread.name);
+                }
+
             }
         }
     }
 }
 
 - (void)startTaskWithBlock:(studentBlock)block {
+    
+    self.startTime = CACurrentMediaTime();
     
     int rangeThread = self.range / THREAD_COUNT;
     
@@ -96,7 +103,7 @@
             for (int i = threadRange.location; i < threadRange.length; i++) {
                 if (i == self.number) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        block([NSString stringWithFormat:@"%@ found number, number equals %d",self.name, i]);
+                        block([NSString stringWithFormat:@"%@ found number, number equals %d during = %f",self.name, i, CACurrentMediaTime() - self.startTime]);
                     });
                 }
             }
