@@ -8,7 +8,7 @@
 
 #import "TTStudentSuperman.h"
 
-#define THREAD_COUNT 20
+#define THREAD_COUNT 10
 
 @interface TTStudentSuperman ()
 

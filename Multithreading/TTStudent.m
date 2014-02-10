@@ -8,7 +8,7 @@
 
 #import "TTStudent.h"
 
-#define THREAD_COUNT 20
+#define THREAD_COUNT 10
 
 @interface TTStudent ()
 @property (strong,nonatomic) NSMutableArray *threadArray;
@@ -56,7 +56,7 @@
         NSRange threadRange = {startPoint,endPoint};
         NSThread *thread = [[NSThread alloc]initWithTarget:self selector:@selector(guessTheNumberThread:) object:[NSValue valueWithRange:threadRange]];
         thread.name = [NSString stringWithFormat:@"%@ %d",self.name, i];
-        @synchronized (self.threadArray) {
+        @synchronized (self) {
             [self.threadArray addObject:thread];
         }
         [thread start];
@@ -74,7 +74,7 @@
         if (i == self.number) {
             NSLog(@"%@ found number, number equals %d during = %f",self.name, i, CACurrentMediaTime() - self.startTime);
             
-            @synchronized (self.threadArray) {
+            @synchronized (self) {
                 for (NSThread *thread in temp) {
                         [thread cancel];
                         NSLog(@"%@ is cancel",thread.name);
