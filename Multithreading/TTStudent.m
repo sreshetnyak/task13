@@ -85,7 +85,7 @@
     }
 }
 
-- (void)startTaskWithBlock:(studentBlock)block {
+- (void)startTaskWithBlock:(TTStudentBlock)block {
     
     self.startTime = CACurrentMediaTime();
     

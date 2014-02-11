@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef  void (^studentBlock)(NSString *str);
+typedef  void (^TTStudentBlock)(NSString *str);
 
 @interface TTStudent : NSObject
 
@@ -20,6 +20,6 @@ typedef  void (^studentBlock)(NSString *str);
 
 - (id)initWithName:(NSString *)name guessTheNumber:(NSInteger)number range:(NSInteger)range;
 - (void)startTask;
-- (void)startTaskWithBlock:(studentBlock)block;
+- (void)startTaskWithBlock:(TTStudentBlock)block;
 
 @end
